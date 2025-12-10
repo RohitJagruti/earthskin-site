@@ -2,25 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>EARTHSKIN – Made from Earth. For Your Skin.</title>
+  <title>EARTHSKIN – Performance Bamboo Tees</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="EarthSkin – ultra-soft bamboo streetwear and performance apparel. Made from Earth. For Your Skin." />
+  <meta name="description" content="EarthSkin – performance-grade bamboo T-shirts for training and street. Ultra-soft, sweat-ready, planet-conscious." />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      /* Eco-luxury palette */
-      --charcoal: #0d0f0e;
-      --forest: #0f2414;
-      --bamboo: #7cc76e;
-      --clay: #c3a88e;
-      --linen: #fafaf5;
-      --stone: #a7b0a3;
+      /* Performance tech palette */
+      --bg: #050608;
+      --bg-alt: #0a0d10;
+      --bg-soft: #10151b;
+      --accent: #a3ff3f; /* neon performance green */
+      --accent-soft: rgba(163, 255, 63, 0.12);
+      --accent-soft-2: rgba(163, 255, 63, 0.04);
+      --text-main: #f7f9fb;
+      --text-muted: #98a2b3;
+      --border-subtle: #1c222b;
 
       --max-width: 1160px;
-      --radius-lg: 26px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.6);
+      --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.85);
     }
 
     * {
@@ -31,10 +37,10 @@
 
     html, body {
       height: 100%;
+      background: radial-gradient(circle at top, #151c24 0, #050608 55%, #020305 100%);
+      color: var(--text-main);
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       scroll-behavior: smooth;
-      background: radial-gradient(circle at top, #243428 0, #050605 50%, #020303 100%);
-      color: var(--linen);
     }
 
     img {
@@ -43,144 +49,51 @@
     }
 
     a {
-      text-decoration: none;
       color: inherit;
+      text-decoration: none;
     }
 
     .page {
-      position: relative;
       min-height: 100vh;
-      isolation: isolate;
+      position: relative;
       overflow-x: hidden;
+      isolation: isolate;
     }
 
-    /* Ambient gradient blobs (parallax background) */
+    /* Background tech grid */
 
-    .blob {
+    .grid-overlay {
       position: fixed;
-      width: 420px;
-      height: 420px;
-      border-radius: 999px;
-      filter: blur(50px);
-      opacity: 0.25;
-      mix-blend-mode: screen;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 120px 120px;
+      opacity: 0.35;
+      mix-blend-mode: soft-light;
       pointer-events: none;
       z-index: 0;
+    }
+
+    .diag-stripe {
+      position: fixed;
+      top: -40%;
+      right: -35%;
+      width: 80%;
+      height: 180%;
+      background: linear-gradient(
+        135deg,
+        rgba(163, 255, 63, 0.18),
+        transparent 60%
+      );
+      opacity: 0.2;
+      pointer-events: none;
+      z-index: 0;
+      transform: translate3d(0, 0, 0);
       transition: transform 0.6s ease-out;
     }
 
-    .blob.b1 {
-      background: radial-gradient(circle, rgba(124, 199, 110, 0.9), transparent 60%);
-      top: -120px;
-      left: -120px;
-    }
-
-    .blob.b2 {
-      background: radial-gradient(circle, rgba(195, 168, 142, 0.9), transparent 60%);
-      bottom: -160px;
-      right: -100px;
-    }
-
-    .blob.b3 {
-      background: radial-gradient(circle, rgba(167, 242, 160, 0.8), transparent 60%);
-      top: 45%;
-      right: 5%;
-    }
-
-    /* NAV */
-
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(90deg, rgba(6, 8, 6, 0.96), rgba(8, 15, 10, 0.96));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-orb {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 25% 10%, #fdfdf5, transparent 40%),
-        radial-gradient(circle at 70% 100%, #7cc76e, transparent 65%),
-        radial-gradient(circle at 0 80%, #263a29, transparent 70%);
-      box-shadow: 0 0 20px rgba(124, 199, 110, 0.9);
-    }
-
-    .nav-brand {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      font-size: 0.8rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 0.84rem;
-    }
-
-    .nav-link {
-      position: relative;
-      color: rgba(245, 245, 245, 0.78);
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--bamboo), #f4ebc1);
-      transition: width 0.22s ease-out;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(167, 242, 160, 0.9);
-      background: radial-gradient(circle at top, #a7f2a0, #4c8a47);
-      color: #041004;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 30px rgba(124, 199, 110, 0.7);
-      background: radial-gradient(circle at top, #c8ffc0, #5da054);
-    }
-
-    /* SECTIONS */
+    /* Layout */
 
     .section {
       padding: 100px 20px;
@@ -195,38 +108,134 @@
 
     .section-title {
       font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(2.1rem, 3.4vw, 2.8rem);
-      letter-spacing: 0.08em;
+      font-size: clamp(2.2rem, 3.4vw, 2.8rem);
       text-transform: uppercase;
-      margin-bottom: 12px;
+      letter-spacing: 0.16em;
+      margin-bottom: 14px;
+    }
+
+    .section-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
 
     .section-sub {
       max-width: 620px;
       font-size: 0.96rem;
-      color: rgba(244, 245, 244, 0.8);
+      color: var(--text-muted);
       margin-bottom: 28px;
     }
 
-    .section.light {
-      background: radial-gradient(circle at top, #ffffff 0, #f6f1ea 40%, #e8dfd3 100%);
-      color: #11130f;
+    .section.alt {
+      background: radial-gradient(circle at top, #0f141b 0, #050608 60%);
     }
 
-    .section.light .section-sub {
-      color: rgba(18, 20, 18, 0.72);
+    /* NAV */
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      backdrop-filter: blur(20px);
+      background: linear-gradient(90deg, rgba(5, 7, 10, 0.97), rgba(5, 7, 10, 0.9));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
-    .section.dark {
-      background: radial-gradient(circle at top left, #253629 0, #050605 45%, #020303 100%);
-      color: var(--linen);
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
     }
 
-    .section.center {
-      text-align: center;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    /* HERO – split screen with parallax image stack */
+    .nav-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 12px;
+      background:
+        conic-gradient(from 130deg, var(--accent) 0, #ffffff 14%, #151b23 40%, #151b23 70%, var(--accent) 100%);
+      box-shadow: 0 0 18px rgba(163, 255, 63, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-mark::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.7);
+      background: radial-gradient(circle at 30% 0, rgba(255, 255, 255, 0.4), transparent 55%);
+    }
+
+    .nav-brand {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.82rem;
+    }
+
+    .nav-link {
+      position: relative;
+      color: rgba(248, 250, 252, 0.7);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(163, 255, 63, 0.8);
+      background: radial-gradient(circle at top, var(--accent), #4b8021);
+      color: #050807;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 28px rgba(163, 255, 63, 0.7);
+      background: radial-gradient(circle at top, #c9ff8f, #4b8021);
+    }
+
+    /* HERO */
 
     .hero {
       min-height: 100vh;
@@ -245,26 +254,35 @@
       align-items: center;
     }
 
+    .hero-eyebrow {
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
     .hero-heading {
       font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(2.6rem, 4vw, 3.4rem);
+      font-size: clamp(2.6rem, 4vw, 3.6rem);
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.04;
+      letter-spacing: 0.1em;
+      line-height: 1.05;
       margin-bottom: 16px;
     }
 
-    .gradient-text {
-      background: linear-gradient(115deg, #f4ebc1, var(--bamboo), #ffffff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-heading span {
+      display: block;
+    }
+
+    .hero-highlight {
+      color: var(--accent);
     }
 
     .hero-sub {
-      max-width: 460px;
+      max-width: 440px;
       font-size: 0.98rem;
-      color: rgba(245, 245, 245, 0.82);
+      color: var(--text-muted);
       margin-bottom: 22px;
     }
 
@@ -275,21 +293,21 @@
       margin-bottom: 18px;
     }
 
-    .pill {
+    .tag-pill {
       padding: 6px 12px;
       border-radius: 999px;
       font-size: 0.74rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      background: rgba(16, 26, 17, 0.9);
-      border: 1px solid rgba(124, 199, 110, 0.6);
-      color: rgba(245, 245, 245, 0.94);
+      background: rgba(16, 22, 28, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: rgba(226, 232, 240, 0.9);
     }
 
     .hero-ctas {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 12px;
     }
 
@@ -297,7 +315,7 @@
       padding: 14px 24px;
       border-radius: 999px;
       border: none;
-      font-size: 0.96rem;
+      font-size: 0.94rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -307,83 +325,135 @@
     }
 
     .btn-primary {
-      background: radial-gradient(circle at top, #a7f2a0, var(--bamboo));
-      color: #051005;
-      box-shadow: 0 18px 40px rgba(124, 199, 110, 0.8);
+      background: radial-gradient(circle at top, var(--accent), #4b8021);
+      color: #050807;
+      box-shadow: 0 18px 44px rgba(163, 255, 63, 0.75);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 22px 52px rgba(124, 199, 110, 0.95);
+      box-shadow: 0 22px 60px rgba(163, 255, 63, 0.9);
     }
 
-    .btn-ghost {
-      background: rgba(6, 10, 7, 0.8);
-      color: var(--linen);
-      border: 1px solid rgba(245, 245, 245, 0.2);
+    .btn-outline {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
-    .btn-ghost:hover {
-      background: rgba(245, 245, 245, 0.09);
+    .btn-outline:hover {
+      background: rgba(15, 23, 42, 0.8);
       transform: translateY(-2px);
     }
 
     .hero-note {
-      font-size: 0.78rem;
-      color: rgba(226, 236, 228, 0.7);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
     }
+
+    /* HERO – image side */
 
     .hero-media {
       position: relative;
-      min-height: 260px;
+      min-height: 280px;
     }
 
-    .hero-stack {
+    .hero-panel {
       position: relative;
-      height: 320px;
-      perspective: 1200px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: radial-gradient(circle at 0 0, rgba(163, 255, 63, 0.35), transparent 50%), #050609;
+      box-shadow: var(--shadow-strong);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      height: 100%;
+      transform-origin: center;
+      transition: transform 0.4s ease-out;
     }
 
-    .hero-card-img {
+    .hero-img {
       position: absolute;
       inset: 0;
-      border-radius: var(--radius-lg);
       background-size: cover;
       background-position: center;
-      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      transform-origin: center;
-      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+      opacity: 0.96;
+      filter: saturate(1.1) contrast(1.08);
+      transform: translateY(0);
+      transition: transform 0.4s ease-out;
     }
 
-    .hero-card-img:nth-child(1) {
+    /* Free stock previews from Pexels – replace later with your own photos */
+    .hero-img {
       background-image:
-        linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
-        radial-gradient(circle at 10% 0, rgba(124, 199, 110, 0.3), transparent 55%),
-        url("https://images.pexels.com/photos/6311575/pexels-photo-6311575.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      transform: translateY(0) translateZ(0);
-      opacity: 1;
-    }
-
-    .hero-card-img:nth-child(2) {
-      background-image:
-        linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.2)),
-        radial-gradient(circle at 80% 0, rgba(195, 168, 142, 0.4), transparent 60%),
+        linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1)),
         url("https://images.pexels.com/photos/7671161/pexels-photo-7671161.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      transform: translateY(20px) translateZ(-40px) scale(0.96);
-      opacity: 0.6;
     }
 
-    .hero-card-img:nth-child(3) {
-      background-image:
-        linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.25)),
-        radial-gradient(circle at 0 100%, rgba(124, 199, 110, 0.3), transparent 60%),
-        url("https://images.pexels.com/photos/7671165/pexels-photo-7671165.jpeg?auto=compress&cs=tinysrgb&w=1200");
-      transform: translateY(40px) translateZ(-80px) scale(0.92);
-      opacity: 0.4;
+    .hero-label-bar {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: rgba(226, 232, 240, 0.9);
     }
 
-    /* FEATURES */
+    .hero-label-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .hero-specs {
+      display: flex;
+      gap: 12px;
+    }
+
+    .hero-specs span {
+      font-size: 0.76rem;
+      color: rgba(148, 163, 184, 0.96);
+    }
+
+    /* STAT BAR (under hero) */
+
+    .stat-bar {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .stat-tile {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 0.8rem;
+    }
+
+    .stat-value {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.7rem;
+    }
+
+    /* FEATURES – PERFORMANCE TECH */
 
     .features-grid {
       display: grid;
@@ -393,67 +463,112 @@
     }
 
     .feature-card {
-      background: #ffffff;
-      border-radius: 18px;
+      border-radius: var(--radius-md);
       padding: 18px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      font-size: 0.88rem;
+      background: var(--bg-soft);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
-      transform-origin: center;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.1);
+      font-size: 0.9rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
     .feature-card::before {
       content: "";
       position: absolute;
       inset: -40%;
-      background: radial-gradient(circle at top left, rgba(124, 199, 110, 0.2), transparent 60%);
+      background: radial-gradient(circle at top, var(--accent-soft), transparent 60%);
       opacity: 0;
-      transition: opacity 0.18s ease;
+      transition: opacity 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
+      border-color: rgba(163, 255, 63, 0.7);
+      background: #0c1117;
     }
 
     .feature-card:hover::before {
       opacity: 1;
     }
 
-    .feature-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      background: rgba(18, 30, 19, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
+    .feature-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
     }
 
     .feature-title {
       font-weight: 600;
       margin-bottom: 6px;
-      font-size: 0.96rem;
     }
 
     .feature-text {
-      color: rgba(20, 22, 20, 0.7);
+      color: var(--text-muted);
+      font-size: 0.86rem;
     }
 
-    /* STRIP */
+    /* COLLECTIONS – simple tech cards */
 
-    .strip-lines {
-      font-size: 0.96rem;
-      color: rgba(245, 245, 245, 0.8);
-      line-height: 1.7;
+    .collections-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 26px;
     }
 
-    /* STORY */
+    .collection-card {
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%), #050608;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .collection-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-strong);
+      border-color: rgba(163, 255, 63, 0.8);
+    }
+
+    .collection-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .collection-title {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 1.06rem;
+      margin-bottom: 6px;
+    }
+
+    .collection-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .collection-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* FABRIC / TECH SECTION */
 
     .split {
       display: grid;
@@ -462,234 +577,89 @@
       align-items: center;
     }
 
-    .story-text {
-      font-size: 0.94rem;
-      color: rgba(18, 20, 18, 0.78);
-      margin-bottom: 10px;
-    }
-
-    .story-list {
+    .list {
       list-style: none;
       font-size: 0.9rem;
-      color: rgba(18, 20, 18, 0.74);
-      margin-top: 8px;
+      color: var(--text-muted);
+      margin-top: 10px;
     }
 
-    .story-list li + li {
-      margin-top: 5px;
+    .list li + li {
+      margin-top: 6px;
     }
 
-    .story-cards {
-      display: grid;
-      gap: 16px;
-    }
-
-    .story-card {
-      border-radius: 20px;
-      padding: 16px;
-      background: linear-gradient(135deg, #263229, #050605);
-      color: var(--linen);
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    .fabric-card {
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      background: radial-gradient(circle at top, var(--accent-soft), transparent 60%), #050608;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      box-shadow: var(--shadow-strong);
       position: relative;
       overflow: hidden;
     }
 
-    .story-label {
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      opacity: 0.78;
-      margin-bottom: 6px;
-    }
-
-    .story-body {
-      font-size: 0.92rem;
-    }
-
-    .story-glow {
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      border-radius: 999px;
-      background: radial-gradient(circle, rgba(124, 199, 110, 0.9), transparent 60%);
-      right: -60px;
-      bottom: -70px;
-      opacity: 0.45;
-    }
-
-    /* COLLECTIONS – sticky scroll */
-
-    .collections-shell {
-      display: grid;
-      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-      gap: 40px;
-      align-items: flex-start;
-    }
-
-    .collections-sticky {
-      position: sticky;
-      top: 96px;
-    }
-
-    .collections-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 22px;
-    }
-
-    .collection-card {
-      border-radius: 22px;
-      padding: 18px 18px 20px;
-      background:
-        radial-gradient(circle at top left, rgba(244, 235, 193, 0.18), transparent 60%),
-        linear-gradient(145deg, rgba(250, 250, 250, 0.03), rgba(8, 10, 7, 0.96));
-      border: 1px solid rgba(252, 252, 252, 0.16);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(14px);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .collection-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(245, 245, 245, 0.7);
-    }
-
-    .collection-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.08rem;
-      font-weight: 600;
-    }
-
-    .collection-text {
-      font-size: 0.86rem;
-      color: rgba(244, 244, 244, 0.85);
-    }
-
-    .collection-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      margin-top: 6px;
-      color: rgba(245, 245, 245, 0.7);
-    }
-
-    /* SUSTAINABILITY */
-
-    .sust-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .sust-item {
-      border-radius: 18px;
-      padding: 14px;
-      background: #ffffff;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      font-size: 0.86rem;
-    }
-
-    .sust-label {
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-
-    .sust-text {
-      color: rgba(18, 20, 18, 0.74);
-    }
-
-    /* CUSTOM */
-
-    .custom-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .custom-card {
-      border-radius: 20px;
-      padding: 16px;
-      background: radial-gradient(circle at top left, rgba(124, 199, 110, 0.2), transparent 65%), rgba(5, 7, 5, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.9);
-      font-size: 0.9rem;
-    }
-
-    .custom-title {
-      font-weight: 600;
-      font-size: 0.96rem;
-      margin-bottom: 6px;
-    }
-
-    .custom-tagline {
-      margin-top: 8px;
+    .fabric-label {
       font-size: 0.74rem;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      border-radius: 999px;
-      padding: 4px 8px;
-      border: 1px solid rgba(245, 245, 245, 0.26);
-      display: inline-block;
+      color: var(--accent);
+      margin-bottom: 8px;
     }
 
-    /* REVIEWS */
-
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 24px;
-    }
-
-    .review-card {
-      border-radius: 18px;
-      background: #ffffff;
-      padding: 18px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      font-size: 0.9rem;
-    }
-
-    .review-quote {
-      color: rgba(18, 20, 19, 0.86);
+    .fabric-main {
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: 1rem;
       margin-bottom: 10px;
     }
 
-    .review-name {
-      font-size: 0.8rem;
-      color: rgba(18, 20, 19, 0.62);
+    .fabric-text {
+      font-size: 0.86rem;
+      color: var(--text-muted);
     }
 
-    /* CTA + FOOTER */
-
-    .final-cta {
-      max-width: 640px;
-      margin: 0 auto;
-      text-align: center;
+    .fabric-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
     }
 
-    .final-cta p {
-      margin: 16px 0 26px;
-      font-size: 0.96rem;
-      color: rgba(245, 245, 245, 0.82);
+    .fabric-badge {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      font-size: 0.76rem;
+      color: rgba(226, 232, 240, 0.96);
     }
+
+    /* CTA BAND */
+
+    .cta-band {
+      border-radius: var(--radius-lg);
+      padding: 20px 20px 22px;
+      background: linear-gradient(120deg, #0b1016, #020305);
+      border: 1px solid rgba(15, 23, 42, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .cta-band p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    /* FOOTER */
 
     .footer {
       padding: 24px 20px 40px;
-      background: #050605;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: #020305;
+      border-top: 1px solid rgba(15, 23, 42, 0.9);
       font-size: 0.8rem;
-      color: rgba(235, 235, 235, 0.7);
+      color: var(--text-muted);
     }
 
     .footer-inner {
@@ -699,7 +669,7 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 12px;
     }
 
     .footer-links {
@@ -732,7 +702,8 @@
         order: -1;
       }
 
-      .features-grid {
+      .features-grid,
+      .collections-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
@@ -740,17 +711,12 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .collections-shell {
-        grid-template-columns: minmax(0, 1fr);
+      .cta-band {
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .collections-sticky {
-        position: static;
-      }
-
-      .sust-grid,
-      .custom-grid,
-      .reviews-grid {
+      .stat-bar {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
@@ -765,346 +731,265 @@
       }
 
       .hero {
-        padding-top: 82px;
+        padding-top: 80px;
       }
 
       .features-grid,
-      .sust-grid,
-      .custom-grid,
-      .reviews-grid {
+      .collections-grid,
+      .stat-bar {
         grid-template-columns: minmax(0, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <!-- Parallax blobs -->
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-  <div class="blob b3"></div>
+  <div class="grid-overlay"></div>
+  <div class="diag-stripe" id="diagStripe"></div>
 
   <div class="page">
     <!-- NAV -->
     <header class="nav">
       <div class="nav-inner">
         <div class="nav-left">
-          <div class="nav-orb"></div>
+          <div class="nav-mark"></div>
           <div class="nav-brand">EARTHSKIN</div>
         </div>
         <nav class="nav-links">
-          <a href="#why" class="nav-link">Why EarthSkin</a>
+          <a href="#why" class="nav-link">Why Bamboo</a>
           <a href="#collections" class="nav-link">Collections</a>
-          <a href="#sustainability" class="nav-link">Sustainability</a>
-          <a href="#custom" class="nav-link">Custom</a>
+          <a href="#fabric" class="nav-link">Fabric Tech</a>
           <button class="nav-cta" onclick="document.querySelector('#cta').scrollIntoView({behavior:'smooth'})">
-            Shop Drop
+            Join First Drop
           </button>
         </nav>
       </div>
     </header>
 
     <!-- HERO -->
-    <section class="section dark hero" id="top">
+    <section class="section hero" id="top">
       <div class="hero-inner">
         <div class="hero-copy reveal">
-          <div class="hero-tags">
-            <span class="pill">Bamboo Streetwear</span>
-            <span class="pill">Sustainable Athleisure</span>
-          </div>
+          <div class="hero-eyebrow">Performance bamboo // for training and street</div>
           <h1 class="hero-heading">
-            <span class="gradient-text">Made from Earth.</span><br />
-            For Your Skin.
+            <span>SOFT ON SKIN.</span>
+            <span class="hero-highlight">HARD ON WORKOUTS.</span>
           </h1>
           <p class="hero-sub">
-            Ultra-soft bamboo apparel engineered for movement, shot through with cinematic streetwear cues and built with the planet in mind.
+            EarthSkin builds performance-grade bamboo tees that feel softer than cotton, breathe harder than polyester and look like premium streetwear.
           </p>
+          <div class="hero-tags">
+            <span class="tag-pill">Bamboo performance fabric</span>
+            <span class="tag-pill">Gym + street dual use</span>
+          </div>
           <div class="hero-ctas">
             <button class="btn btn-primary" onclick="document.querySelector('#collections').scrollIntoView({behavior:'smooth'})">
-              Shop Bamboo Collection
+              Shop performance tees
             </button>
-            <button class="btn btn-ghost" onclick="document.querySelector('#sustainability').scrollIntoView({behavior:'smooth'})">
-              Why Bamboo &gt; Cotton
+            <button class="btn btn-outline" onclick="document.querySelector('#why').scrollIntoView({behavior:'smooth'})">
+              Why bamboo &gt;
             </button>
           </div>
           <p class="hero-note">
-            Heavyweight drape. Feather-soft touch. A tee your skin actually notices.
+            Made for lifts, miles and late-night drives. Built to replace your “favourite tee” in one wear.
           </p>
+
+          <div class="stat-bar">
+            <div class="stat-tile">
+              <div class="stat-value">3×</div>
+              <div class="stat-label">Softer feel vs cotton</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">24/7</div>
+              <div class="stat-label">Gym-to-street comfort</div>
+            </div>
+            <div class="stat-tile">
+              <div class="stat-value">LESS</div>
+              <div class="stat-label">Water &amp; pesticides used</div>
+            </div>
+          </div>
         </div>
 
-        <div class="hero-media reveal" data-parallax>
-          <div class="hero-stack">
-            <div class="hero-card-img"></div>
-            <div class="hero-card-img"></div>
-            <div class="hero-card-img"></div>
+        <div class="hero-media reveal" id="heroMedia">
+          <div class="hero-panel">
+            <div class="hero-img" id="heroImg"></div>
+            <div class="hero-label-bar">
+              <div class="hero-label-pill">Bamboo Performance / 220–240 GSM</div>
+              <div class="hero-specs">
+                <span>Anti-odor</span>
+                <span>Quick-dry</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY / FEATURES -->
-    <section class="section light" id="why">
+    <!-- WHY BAMBOO / FEATURES -->
+    <section class="section alt" id="why">
       <div class="section-inner reveal">
-        <h2 class="section-title">Why EarthSkin?</h2>
+        <div class="section-kicker">WHY BAMBOO</div>
+        <h2 class="section-title">Built from a better base layer.</h2>
         <p class="section-sub">
-          We took bamboo’s natural performance, gave it a cinematic streetwear cut and tuned it so one tee can lift, sprint and slow-brew coffee with you.
+          We started with bamboo because your skin deserves more than plastic sportswear and scratchy cotton. Then we dialed it in for strength work, conditioning and street use.
         </p>
+
         <div class="features-grid">
           <article class="feature-card">
-            <div class="feature-icon">🌿</div>
-            <h3 class="feature-title">Skin-friendly bamboo</h3>
+            <div class="feature-tag">Grip</div>
+            <h3 class="feature-title">Soft on skin, not on bar.</h3>
             <p class="feature-text">
-              Softer than cotton with a naturally round fiber that glides against your skin instead of scratching it.
+              Naturally smooth fibers reduce skin irritation while maintaining a dry, confident feel under barbells and bands.
             </p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon">💧</div>
-            <h3 class="feature-title">Naturally sweat-wicking</h3>
+            <div class="feature-tag">Breathability</div>
+            <h3 class="feature-title">Heat out. Focus in.</h3>
             <p class="feature-text">
-              Moves moisture away so you stay cooler through sets, sprints and summer heat.
+              Bamboo pulls moisture away and lets air flow, so your focus stays on the next rep, not the next sweat patch.
             </p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon">🌎</div>
-            <h3 class="feature-title">Eco-engineered fabric</h3>
+            <div class="feature-tag">Freshness</div>
+            <h3 class="feature-title">Anti-odor by nature.</h3>
             <p class="feature-text">
-              Bamboo grows fast on less water and without harsh pesticides, keeping your footprint lighter.
+              Naturally anti-bacterial properties help resist odor so you can go from set three to street food without a swap.
             </p>
           </article>
           <article class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3 class="feature-title">Custom finishes</h3>
+            <div class="feature-tag">Planet</div>
+            <h3 class="feature-title">Less load on the earth.</h3>
             <p class="feature-text">
-              Silicone 3D badges, puff ink, reflective hits and embroidery – tailored for gyms, crews and creators.
+              Bamboo grows fast, uses less water and skips harsh pesticides. Performance that doesn’t cost the planet extra.
             </p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- STRIP -->
-    <section class="section dark center">
+    <!-- COLLECTIONS -->
+    <section class="section" id="collections">
       <div class="section-inner reveal">
-        <h2 class="section-title">Comfort. Performance. Planet.</h2>
-        <p class="strip-lines">
-          Not just another T-shirt rack.<br />
-          A new baseline for what “good” feels like on your skin – and what “responsible” looks like on the planet.
+        <div class="section-kicker">LINE-UP</div>
+        <h2 class="section-title">Three builds. One attitude.</h2>
+        <p class="section-sub">
+          All EarthSkin pieces share the same bamboo DNA and performance mindset. You pick how you want it to sit on your frame and in your day.
         </p>
+
+        <div class="collections-grid">
+          <article class="collection-card">
+            <div>
+              <div class="collection-tag">Daily / Street</div>
+              <h3 class="collection-title">Core Oversized</h3>
+              <p class="collection-text">
+                Drop-shoulder, boxy fit, neutral tones. Built to live in – from coffee runs to casual days at the rack.
+              </p>
+            </div>
+            <div class="collection-meta">
+              <span>220 GSM feel</span>
+              <span>Muted palette</span>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div>
+              <div class="collection-tag">Gym / Run / Ride</div>
+              <h3 class="collection-title">Active Fit</h3>
+              <p class="collection-text">
+                Slightly tapered, training-first tee with mobility in the shoulders and airflow down the back.
+              </p>
+            </div>
+            <div class="collection-meta">
+              <span>Quick-dry</span>
+              <span>Training ready</span>
+            </div>
+          </article>
+
+          <article class="collection-card">
+            <div>
+              <div class="collection-tag">Teams / Creators</div>
+              <h3 class="collection-title">Custom Drops</h3>
+              <p class="collection-text">
+                Your gym, crew or brand on EarthSkin fabric – with 3D logos, reflective hits or clean embroidery.
+              </p>
+            </div>
+            <div class="collection-meta">
+              <span>Low MOQ</span>
+              <span>Designed with you</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!-- STORY SPLIT -->
-    <section class="section light" id="story">
+    <!-- FABRIC TECH -->
+    <section class="section alt" id="fabric">
       <div class="section-inner split">
         <div class="reveal">
-          <h2 class="section-title">The EarthSkin story</h2>
-          <p class="story-text">
-            EarthSkin started with a simple question: why are the softest clothes often the least sustainable – and the eco-friendly ones often rough on skin?
+          <div class="section-kicker">FABRIC TECH</div>
+          <h2 class="section-title">Performance-engineered bamboo.</h2>
+          <p class="section-sub">
+            This isn’t just “eco fabric”. It’s fiber chosen for comfort, tuned for training and cut to sit right in real life – not just in product shots.
           </p>
-          <p class="story-text">
-            We went back to fabric. Bamboo grows fast, regenerates quickly and spins into a fiber that’s insanely soft, breathable and naturally anti-odor.
-          </p>
-          <p class="story-text">
-            Then we sculpted it into silhouettes that feel like streetwear and behave like performance gear. One bamboo tee for the rack pulls, night rides and slow Sundays.
-          </p>
-          <ul class="story-list">
-            <li>• Heavyweight 220–240 GSM drape with bamboo softness built in.</li>
-            <li>• Understated branding so your style, not our logo, leads the frame.</li>
-            <li>• Designed for long-term wear, not seasonal throwaway hype.</li>
+          <ul class="list">
+            <li>• 220–240 GSM bamboo blends that drape with weight but don’t feel heavy.</li>
+            <li>• Naturally breathable and moisture-managing for humid gyms and Indian summers.</li>
+            <li>• Less cling, less static, more air between you and the grind.</li>
+            <li>• Flat seams and necklines designed to move with you, not against you.</li>
           </ul>
         </div>
-        <div class="story-cards reveal">
-          <article class="story-card">
-            <div class="story-label">Fitness × street</div>
-            <div class="story-body">
-              Engineered for motion, styled for the city. From deadlifts and drop sets to late-night drives.
-            </div>
-            <div class="story-glow"></div>
-          </article>
-          <article class="story-card">
-            <div class="story-label">Soft-core minimalism</div>
-            <div class="story-body">
-              Clean lines, neutral tones, tactile detailing. Quiet from far, interesting up close.
-            </div>
-            <div class="story-glow" style="background:radial-gradient(circle,rgba(195,168,142,0.9),transparent 60%);"></div>
-          </article>
-          <article class="story-card">
-            <div class="story-label">Earth-first thinking</div>
-            <div class="story-body">
-              Smarter crops, fewer chemicals and better wear-per-wash – built into every stitch.
-            </div>
-            <div class="story-glow"></div>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <!-- COLLECTIONS – STICKY SCROLL -->
-    <section class="section dark" id="collections">
-      <div class="section-inner collections-shell">
-        <div class="collections-sticky reveal">
-          <h2 class="section-title">Explore the collections</h2>
-          <p class="section-sub">
-            Three core lines. One design language: eco-luxury fabrics, cinematic cuts and fits that stay honest from barbell to backstreet.
+        <div class="fabric-card reveal">
+          <div class="fabric-label">CORE SPEC</div>
+          <div class="fabric-main">70% bamboo / 30% performance fibers*</div>
+          <p class="fabric-text">
+            The sweet spot between natural comfort and technical durability. Bend, sprint, hang – the tee comes back ready again.
+          </p>
+          <div class="fabric-badges">
+            <span class="fabric-badge">Anti-odor</span>
+            <span class="fabric-badge">Moisture-managing</span>
+            <span class="fabric-badge">Soft-touch</span>
+            <span class="fabric-badge">Less water used</span>
+          </div>
+          <p class="fabric-text" style="margin-top:10px;font-size:0.78rem;">
+            *Exact blend may change by drop as we experiment with better, cleaner performance mixes.
           </p>
         </div>
-        <div class="collections-grid reveal">
-          <article class="collection-card">
-            <div class="collection-tag">Daily / Off-duty</div>
-            <h3 class="collection-title">Bamboo Essentials</h3>
-            <p class="collection-text">
-              Oversized and regular-fit tees in muted tones. Throw on, live in, repeat – the base layer to every day.
-            </p>
-            <div class="collection-meta">
-              <span>Cloud-soft feel</span>
-              <span>220 GSM</span>
-            </div>
-          </article>
-          <article class="collection-card">
-            <div class="collection-tag">Gym / Run / Ride</div>
-            <h3 class="collection-title">Bamboo Active</h3>
-            <p class="collection-text">
-              Sweat-wicking, anti-odor and breathable. Built for HIIT days, long runs and humid city evenings.
-            </p>
-            <div class="collection-meta">
-              <span>Performance blends</span>
-              <span>Quick dry</span>
-            </div>
-          </article>
-          <article class="collection-card">
-            <div class="collection-tag">Earth tones</div>
-            <h3 class="collection-title">Earth Neutrals</h3>
-            <p class="collection-text">
-              Charcoal, olive, sand and bone – nature’s color palette, remixed as heavyweight bamboo streetwear.
-            </p>
-            <div class="collection-meta">
-              <span>Drop-shoulder fits</span>
-              <span>Limited drops</span>
-            </div>
-          </article>
-        </div>
       </div>
     </section>
 
-    <!-- SUSTAINABILITY -->
-    <section class="section light" id="sustainability">
+    <!-- CTA -->
+    <section class="section" id="cta">
       <div class="section-inner reveal">
-        <h2 class="section-title">Soft on you. Soft on Earth.</h2>
-        <p class="section-sub">
-          Bamboo grows fast, needs less water and thrives without harsh pesticides. That means your favorite tee begins life with a smaller impact.
-        </p>
-        <div class="sust-grid">
-          <article class="sust-item">
-            <div class="sust-label">3× softer than cotton</div>
-            <div class="sust-text">
-              A naturally smoother fiber structure means your skin gets cloud-level comfort from day one.
-            </div>
-          </article>
-          <article class="sust-item">
-            <div class="sust-label">Anti-bacterial &amp; anti-odor</div>
-            <div class="sust-text">
-              Wear it longer between washes. Bamboo helps keep funk away when the training gets heavy.
-            </div>
-          </article>
-          <article class="sust-item">
-            <div class="sust-label">UV-resilient fabric</div>
-            <div class="sust-text">
-              Added defence when you’re logging miles or sets under sharp daylight.
-            </div>
-          </article>
-          <article class="sust-item">
-            <div class="sust-label">Lower water + chemicals</div>
-            <div class="sust-text">
-              A smarter crop, mindful processes and biodegradable fibers – for a softer footprint on land and water.
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CUSTOM -->
-    <section class="section dark" id="custom">
-      <div class="section-inner reveal">
-        <h2 class="section-title">Your style, your print, your EarthSkin.</h2>
-        <p class="section-sub">
-          Build gym merch, crew uniforms or creator drops on the same bamboo base – with finishes that feel boutique, not bulk order.
-        </p>
-        <div class="custom-grid">
-          <article class="custom-card">
-            <div class="custom-title">Silicone 3D badges</div>
-            <p>Rubberised logos with 1–2 mm lift. Think premium sportswear branding, now on bamboo.</p>
-            <span class="custom-tagline">Streetwear</span>
-          </article>
-          <article class="custom-card">
-            <div class="custom-title">Puff &amp; high-density ink</div>
-            <p>3D statements and bold text that pop under gym lighting and camera flash alike.</p>
-            <span class="custom-tagline">Limited drops</span>
-          </article>
-          <article class="custom-card">
-            <div class="custom-title">Reflective lines &amp; hits</div>
-            <p>For night runners, riders and crews who only really show up when the city lights do.</p>
-            <span class="custom-tagline">Night active</span>
-          </article>
-          <article class="custom-card">
-            <div class="custom-title">Clean embroidery</div>
-            <p>Minimal logos, monograms and micro-text stitched into ultra-soft fabric.</p>
-            <span class="custom-tagline">Premium</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <section class="section light" id="reviews">
-      <div class="section-inner reveal">
-        <h2 class="section-title">Loved by those who love comfort.</h2>
-        <div class="reviews-grid">
-          <article class="review-card">
-            <p class="review-quote">
-              “Feels like wearing air with weight. I finish leg day and still don’t want to take it off.”
+        <div class="cta-band">
+          <div>
+            <div class="section-kicker">FIRST DROP</div>
+            <h2 class="section-title" style="font-size:1.4rem;letter-spacing:0.18em;">
+              EARTHSKIN // 01
+            </h2>
+            <p>
+              Limited run of performance bamboo tees. If you lift, run, ride or just live in T-shirts, this is your test batch. Feedback welcome. Heavy use expected.
             </p>
-            <p class="review-name">— Aditya, Strength Coach</p>
-          </article>
-          <article class="review-card">
-            <p class="review-quote">
-              “Hyderabad heat, tempo runs and one tee. No cling, no stink. That’s rare.”
-            </p>
-            <p class="review-name">— Sana, Distance Runner</p>
-          </article>
-          <article class="review-card">
-            <p class="review-quote">
-              “Looks like designer streetwear, feels like sleepwear and doesn’t mess with my climate guilt.”
-            </p>
-            <p class="review-name">— Karan, Designer</p>
-          </article>
+          </div>
+          <div>
+            <button class="btn btn-primary">
+              I want in
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- FINAL CTA -->
-    <section class="section dark" id="cta">
-      <div class="section-inner final-cta reveal">
-        <h2 class="section-title">Wear something that feels right. And is right.</h2>
-        <p>
-          Ultra-soft bamboo, eco-luxury palette and performance built in. Once you move in EarthSkin, “just a T-shirt” won’t feel enough.
-        </p>
-        <button class="btn btn-primary">
-          Join the first drop
-        </button>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer-inner">
-        <div>EARTHSKIN — Made from Earth. For Your Skin.</div>
+        <div>EARTHSKIN – Performance bamboo for training and street.</div>
         <div class="footer-links">
           <a href="#top">Top</a>
-          <a href="#why">Why</a>
+          <a href="#why">Why bamboo</a>
           <a href="#collections">Collections</a>
-          <a href="#sustainability">Sustainability</a>
-          <a href="#custom">Custom</a>
+          <a href="#fabric">Fabric tech</a>
         </div>
-        <div>© <span id="year"></span> EarthSkin. All rights reserved.</div>
+        <div>© <span id="year"></span> EarthSkin.</div>
       </div>
     </footer>
   </div>
@@ -1128,29 +1013,21 @@
     );
     reveals.forEach(el => io.observe(el));
 
-    // parallax blobs + hero image stack tilt
-    const blobs = document.querySelectorAll(".blob");
-    const parallaxEls = document.querySelectorAll("[data-parallax]");
-    const heroCards = document.querySelectorAll(".hero-card-img");
+    // subtle parallax and stripe motion
+    const heroMedia = document.getElementById("heroMedia");
+    const diagStripe = document.getElementById("diagStripe");
 
     window.addEventListener("scroll", () => {
       const y = window.scrollY || window.pageYOffset;
+      const parallax = y * -0.03;
+      const stripe = y * 0.02;
 
-      blobs.forEach((blob, i) => {
-        const factor = (i + 1) * 0.02;
-        blob.style.transform = `translateY(${y * factor}px)`;
-      });
-
-      parallaxEls.forEach(el => {
-        el.style.transform = `translateY(${y * -0.06}px)`;
-      });
-
-      const maxShift = 25;
-      heroCards.forEach((card, idx) => {
-        const depth = idx * 12;
-        const shift = (y * 0.04) - depth;
-        card.style.transform = `translateY(${shift}px) translateZ(${-idx * 40}px) scale(${1 - idx * 0.04})`;
-      });
+      if (heroMedia) {
+        heroMedia.style.transform = `translateY(${parallax}px)`;
+      }
+      if (diagStripe) {
+        diagStripe.style.transform = `translateY(${stripe}px)`;
+      }
     });
   </script>
 </body>
