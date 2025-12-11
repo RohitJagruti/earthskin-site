@@ -1,1034 +1,325 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>EARTHSKIN – Performance Bamboo Tees</title>
+  <meta charset="utf-8" />
+  <title>earthskin® — Performance Bamboo Tees</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="EarthSkin – performance-grade bamboo T-shirts for training and street. Ultra-soft, sweat-ready, planet-conscious." />
+  <meta name="description" content="earthskin — performance-grade bamboo T-shirts for training and street. Ultra-soft, sweat-ready, planet-conscious." />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      /* Performance tech palette */
-      --bg: #050608;
-      --bg-alt: #0a0d10;
-      --bg-soft: #10151b;
-      --accent: #a3ff3f; /* neon performance green */
-      --accent-soft: rgba(163, 255, 63, 0.12);
-      --accent-soft-2: rgba(163, 255, 63, 0.04);
-      --text-main: #f7f9fb;
-      --text-muted: #98a2b3;
-      --border-subtle: #1c222b;
-
-      --max-width: 1160px;
-      --radius-lg: 24px;
-      --radius-md: 16px;
-      --shadow-soft: 0 22px 60px rgba(0, 0, 0, 0.6);
-      --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.85);
+    :root{
+      /* Matte black + beige + green theme */
+      --matte-black: #080808;
+      --matte-black-2: #0e0e0e;
+      --beige: #d9cbb9;        /* warm beige for highlights & text */
+      --beige-muted: #bfae9a;
+      --green: #6fbf66;        /* earthy green accent */
+      --green-soft: rgba(111,191,102,0.12);
+      --text: #f4f4f4;
+      --muted: #9aa0a6;
+      --max: 1160px;
+      --radius: 18px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,var(--matte-black) 0%, #050505 100%);color:var(--text);scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+    img{max-width:100%;display:block}
+    a{text-decoration:none;color:inherit}
+    .page{min-height:100vh;position:relative;overflow-x:hidden}
+    .section{padding:100px 20px;position:relative;z-index:1}
+    .section-inner{max-width:var(--max);margin:0 auto}
 
-    html, body {
-      height: 100%;
-      background: radial-gradient(circle at top, #151c24 0, #050608 55%, #020305 100%);
-      color: var(--text-main);
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      scroll-behavior: smooth;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      position: relative;
-      overflow-x: hidden;
-      isolation: isolate;
-    }
-
-    /* Background tech grid */
-
-    .grid-overlay {
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 120px 120px;
-      opacity: 0.35;
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .diag-stripe {
-      position: fixed;
-      top: -40%;
-      right: -35%;
-      width: 80%;
-      height: 180%;
-      background: linear-gradient(
-        135deg,
-        rgba(163, 255, 63, 0.18),
-        transparent 60%
-      );
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: 0;
-      transform: translate3d(0, 0, 0);
-      transition: transform 0.6s ease-out;
-    }
-
-    /* Layout */
-
-    .section {
-      padding: 100px 20px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .section-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(2.2rem, 3.4vw, 2.8rem);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 14px;
-    }
-
-    .section-kicker {
-      font-size: 0.75rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-
-    .section-sub {
-      max-width: 620px;
-      font-size: 0.96rem;
-      color: var(--text-muted);
-      margin-bottom: 28px;
-    }
-
-    .section.alt {
-      background: radial-gradient(circle at top, #0f141b 0, #050608 60%);
-    }
+    /* BRAND (lowercase + subtle superscript) */
+    .brand-name{font-family:"Space Grotesk",system-ui,sans-serif;text-transform:none;letter-spacing:0.18em;font-weight:700;font-size:0.92rem;display:inline-flex;align-items:flex-start;color:var(--beige)}
+    .brand-name .rtm{font-size:0.52rem;line-height:1;position:relative;top:-0.48em;margin-left:6px;color:var(--beige-muted)}
+    @media (max-width:640px){ .brand-name{letter-spacing:0.08em;font-size:0.82rem} .brand-name .rtm{top:-0.4em;font-size:0.46rem;margin-left:4px} }
 
     /* NAV */
-
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 50;
-      backdrop-filter: blur(20px);
-      background: linear-gradient(90deg, rgba(5, 7, 10, 0.97), rgba(5, 7, 10, 0.9));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-mark {
-      width: 30px;
-      height: 30px;
-      border-radius: 12px;
-      background:
-        conic-gradient(from 130deg, var(--accent) 0, #ffffff 14%, #151b23 40%, #151b23 70%, var(--accent) 100%);
-      box-shadow: 0 0 18px rgba(163, 255, 63, 0.7);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .nav-mark::after {
-      content: "";
-      position: absolute;
-      inset: 6px;
-      border-radius: 8px;
-      border: 1px solid rgba(0, 0, 0, 0.7);
-      background: radial-gradient(circle at 30% 0, rgba(255, 255, 255, 0.4), transparent 55%);
-    }
-
-    .nav-brand {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      font-size: 0.78rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 0.82rem;
-    }
-
-    .nav-link {
-      position: relative;
-      color: rgba(248, 250, 252, 0.7);
-    }
-
-    .nav-link::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.18s ease-out;
-    }
-
-    .nav-link:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      padding: 8px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(163, 255, 63, 0.8);
-      background: radial-gradient(circle at top, var(--accent), #4b8021);
-      color: #050807;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 10px 28px rgba(163, 255, 63, 0.7);
-      background: radial-gradient(circle at top, #c9ff8f, #4b8021);
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 100vh;
-      padding-top: 92px;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 40px 20px 100px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.76rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .hero-heading {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(2.6rem, 4vw, 3.6rem);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      line-height: 1.05;
-      margin-bottom: 16px;
-    }
-
-    .hero-heading span {
-      display: block;
-    }
-
-    .hero-highlight {
-      color: var(--accent);
-    }
-
-    .hero-sub {
-      max-width: 440px;
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      margin-bottom: 22px;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .tag-pill {
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      background: rgba(16, 22, 28, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      color: rgba(226, 232, 240, 0.9);
-    }
-
-    .hero-ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .btn {
-      padding: 14px 24px;
-      border-radius: 999px;
-      border: none;
-      font-size: 0.94rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
-    }
-
-    .btn-primary {
-      background: radial-gradient(circle at top, var(--accent), #4b8021);
-      color: #050807;
-      box-shadow: 0 18px 44px rgba(163, 255, 63, 0.75);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 60px rgba(163, 255, 63, 0.9);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid rgba(148, 163, 184, 0.6);
-    }
-
-    .btn-outline:hover {
-      background: rgba(15, 23, 42, 0.8);
-      transform: translateY(-2px);
-    }
-
-    .hero-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* HERO – image side */
-
-    .hero-media {
-      position: relative;
-      min-height: 280px;
-    }
-
-    .hero-panel {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      background: radial-gradient(circle at 0 0, rgba(163, 255, 63, 0.35), transparent 50%), #050609;
-      box-shadow: var(--shadow-strong);
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      height: 100%;
-      transform-origin: center;
-      transition: transform 0.4s ease-out;
-    }
-
-    .hero-img {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.96;
-      filter: saturate(1.1) contrast(1.08);
-      transform: translateY(0);
-      transition: transform 0.4s ease-out;
-    }
-
-    /* Free stock previews from Pexels – replace later with your own photos */
-    .hero-img {
-      background-image:
-        linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.1)),
-        url("https://images.pexels.com/photos/7671161/pexels-photo-7671161.jpeg?auto=compress&cs=tinysrgb&w=1200");
-    }
-
-    .hero-label-bar {
-      position: absolute;
-      left: 16px;
-      right: 16px;
-      bottom: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.78rem;
-      color: rgba(226, 232, 240, 0.9);
-    }
-
-    .hero-label-pill {
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    .hero-specs {
-      display: flex;
-      gap: 12px;
-    }
-
-    .hero-specs span {
-      font-size: 0.76rem;
-      color: rgba(148, 163, 184, 0.96);
-    }
-
-    /* STAT BAR (under hero) */
-
-    .stat-bar {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .stat-tile {
-      padding: 14px 16px;
-      border-radius: var(--radius-md);
-      background: rgba(15, 23, 42, 0.75);
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      font-size: 0.8rem;
-    }
-
-    .stat-value {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-    }
-
-    .stat-label {
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      font-size: 0.7rem;
-    }
-
-    /* FEATURES – PERFORMANCE TECH */
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .feature-card {
-      border-radius: var(--radius-md);
-      padding: 18px;
-      background: var(--bg-soft);
-      border: 1px solid var(--border-subtle);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      font-size: 0.9rem;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
-    }
-
-    .feature-card::before {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at top, var(--accent-soft), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 26px 70px rgba(0, 0, 0, 0.85);
-      border-color: rgba(163, 255, 63, 0.7);
-      background: #0c1117;
-    }
-
-    .feature-card:hover::before {
-      opacity: 1;
-    }
-
-    .feature-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-
-    .feature-title {
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .feature-text {
-      color: var(--text-muted);
-      font-size: 0.86rem;
-    }
-
-    /* COLLECTIONS – simple tech cards */
-
-    .collections-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .collection-card {
-      border-radius: var(--radius-lg);
-      padding: 18px 18px 20px;
-      background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%), #050608;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      box-shadow: var(--shadow-soft);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 180px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .collection-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-strong);
-      border-color: rgba(163, 255, 63, 0.8);
-    }
-
-    .collection-tag {
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .collection-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.06rem;
-      margin-bottom: 6px;
-    }
-
-    .collection-text {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-    }
-
-    .collection-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* FABRIC / TECH SECTION */
-
-    .split {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .list {
-      list-style: none;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-top: 10px;
-    }
-
-    .list li + li {
-      margin-top: 6px;
-    }
-
-    .fabric-card {
-      border-radius: var(--radius-lg);
-      padding: 18px;
-      background: radial-gradient(circle at top, var(--accent-soft), transparent 60%), #050608;
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      box-shadow: var(--shadow-strong);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .fabric-label {
-      font-size: 0.74rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .fabric-main {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    .fabric-text {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-    }
-
-    .fabric-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-
-    .fabric-badge {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      font-size: 0.76rem;
-      color: rgba(226, 232, 240, 0.96);
-    }
-
-    /* CTA BAND */
-
-    .cta-band {
-      border-radius: var(--radius-lg);
-      padding: 20px 20px 22px;
-      background: linear-gradient(120deg, #0b1016, #020305);
-      border: 1px solid rgba(15, 23, 42, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      margin-top: 32px;
-    }
-
-    .cta-band p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      max-width: 520px;
-    }
-
-    /* FOOTER */
-
-    .footer {
-      padding: 24px 20px 40px;
-      background: #020305;
-      border-top: 1px solid rgba(15, 23, 42, 0.9);
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .footer-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    /* Reveal animation */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Responsive */
-
-    @media (max-width: 960px) {
-      .hero-inner {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-media {
-        order: -1;
-      }
-
-      .features-grid,
-      .collections-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .split {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .cta-band {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .stat-bar {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-links {
-        display: none;
-      }
-
-      .section {
-        padding: 80px 18px;
-      }
-
-      .hero {
-        padding-top: 80px;
-      }
-
-      .features-grid,
-      .collections-grid,
-      .stat-bar {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
+    .nav{position:fixed;top:0;left:0;right:0;z-index:60;backdrop-filter:blur(14px);background:linear-gradient(180deg, rgba(6,6,6,0.9), rgba(6,6,6,0.85));border-bottom:1px solid rgba(255,255,255,0.03)}
+    .nav-inner{max-width:var(--max);margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .nav-links{display:flex;gap:16px;align-items:center}
+    .nav-link{color:rgba(244,244,244,0.86);font-size:0.92rem}
+    .nav-cta{padding:8px 14px;border-radius:999px;background:linear-gradient(180deg,var(--green),#3a7b3a);color:var(--matte-black);font-weight:700;border:none;cursor:pointer}
+
+    /* Hero */
+    .hero{min-height:84vh;padding-top:88px;display:flex;align-items:center}
+    .hero-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.08fr 1fr;gap:36px;padding:40px 20px 100px;align-items:center}
+    .hero-eyebrow{font-size:0.76rem;color:var(--green);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+    .hero-heading{font-family:"Space Grotesk",sans-serif;font-size:clamp(2.4rem,4vw,3.4rem);text-transform:uppercase;line-height:1.02;margin-bottom:12px;color:var(--text)}
+    .hero-highlight{color:var(--green)}
+    .hero-sub{color:var(--beige-muted);max-width:480px;margin-bottom:20px;font-size:0.98rem}
+    .tag-pill{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);font-size:0.75rem;color:var(--beige);margin-right:8px}
+    .hero-media{position:relative;min-height:300px}
+    .hero-panel{border-radius:18px;overflow:hidden;background:linear-gradient(180deg,var(--green-soft),transparent);box-shadow:0 30px 80px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.04);height:100%}
+    .hero-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .5s ease,filter .5s ease}
+    /* subtle matte sheen stripe */
+    .diag-stripe{position:fixed;top:-42%;right:-30%;width:76%;height:180%;background:linear-gradient(135deg,rgba(111,191,102,0.12),transparent 60%);opacity:0.14;pointer-events:none;z-index:0;transform:translate3d(0,0,0);transition:transform .6s ease-out}
+
+    /* SHOWCASE */
+    .showcase{padding:80px 10px;background:transparent}
+    .showcase-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:42% 58%;gap:28px;align-items:start}
+    .showcase-left{position:relative;top:60px}
+    .showcase-eyebrow{font-size:.72rem;color:var(--green);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+    .showcase-title{font-family:"Space Grotesk",sans-serif;font-size:clamp(2rem,3.4vw,2.6rem);margin-bottom:10px;color:var(--beige)}
+    .showcase-desc{color:var(--beige-muted);font-size:0.95rem;line-height:1.6;max-width:520px}
+    .showcase-right{position:relative;height:72vh;min-height:420px}
+    .showcase-stage{position:sticky;top:96px;height:72vh;overflow:visible}
+    .stage-viewport{position:relative;height:100%;border-radius:18px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,0.8);border:1px solid rgba(255,255,255,0.04);background:var(--matte-black-2)}
+    .stage-image{position:absolute;inset:0;background-size:cover;background-position:center;will-change:transform,opacity;transition:opacity .5s cubic-bezier(.2,.9,.2,1),transform .6s cubic-bezier(.2,.9,.2,1);opacity:0;transform:scale(1.06) translateY(20px)}
+    .stage-image.visible{opacity:1;transform:scale(1) translateY(0)}
+    .stage-caption{position:absolute;left:18px;bottom:18px;background:rgba(8,8,8,0.75);padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,0.03);font-size:.78rem;color:var(--beige-muted)}
+
+    @media (max-width:960px){
+      .showcase-inner{grid-template-columns:1fr;gap:18px}
+      .showcase-right{height:auto}
+      .showcase-stage{position:relative;top:0;height:60vh}
+      .stage-image{position:relative;opacity:1;transform:none;transition:none;height:100%}
+    }
+
+    /* FEATURES / COLLECTIONS */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+    .feat{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .feat h4{font-size:1rem;margin-bottom:6px;color:var(--beige)}
+    .feat p{color:var(--beige-muted);font-size:0.9rem}
+    .cta{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn-ghost{padding:12px 18px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--beige);cursor:pointer}
+    .btn.btn-primary{padding:12px 18px;border-radius:12px;border:none;background:linear-gradient(180deg,var(--green),#3a7b3a);color:var(--matte-black);font-weight:700;cursor:pointer}
+
+    .footer{padding:42px 20px;background:#050404;color:var(--beige-muted);font-size:0.9rem;margin-top:60px}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
   </style>
 </head>
 <body>
-  <div class="grid-overlay"></div>
-  <div class="diag-stripe" id="diagStripe"></div>
-
   <div class="page">
+    <div class="diag-stripe" id="diagStripe" aria-hidden="true"></div>
+
     <!-- NAV -->
-    <header class="nav">
+    <header class="nav" role="banner">
       <div class="nav-inner">
         <div class="nav-left">
-          <div class="nav-mark"></div>
-          <div class="nav-brand">EARTHSKIN</div>
+          <div class="brand-name" aria-label="earthskin registered trademark">earthskin<span class="rtm">®</span></div>
         </div>
-        <nav class="nav-links">
-          <a href="#why" class="nav-link">Why Bamboo</a>
-          <a href="#collections" class="nav-link">Collections</a>
-          <a href="#fabric" class="nav-link">Fabric Tech</a>
-          <button class="nav-cta" onclick="document.querySelector('#cta').scrollIntoView({behavior:'smooth'})">
-            Join First Drop
-          </button>
+
+        <nav class="nav-links" role="navigation" aria-label="Main navigation">
+          <a class="nav-link" href="#why">Why Bamboo</a>
+          <a class="nav-link" href="#showcase">Showcase</a>
+          <a class="nav-link" href="#collections">Collections</a>
+          <button class="nav-cta" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Join First Drop</button>
         </nav>
       </div>
     </header>
 
     <!-- HERO -->
-    <section class="section hero" id="top">
-      <div class="hero-inner">
+    <section class="section hero" id="top" aria-labelledby="hero-heading">
+      <div class="hero-inner section-inner">
         <div class="hero-copy reveal">
-          <div class="hero-eyebrow">Performance bamboo // for training and street</div>
-          <h1 class="hero-heading">
-            <span>SOFT ON SKIN.</span>
-            <span class="hero-highlight">HARD ON WORKOUTS.</span>
-          </h1>
-          <p class="hero-sub">
-            EarthSkin builds performance-grade bamboo tees that feel softer than cotton, breathe harder than polyester and look like premium streetwear.
-          </p>
-          <div class="hero-tags">
-            <span class="tag-pill">Bamboo performance fabric</span>
-            <span class="tag-pill">Gym + street dual use</span>
-          </div>
-          <div class="hero-ctas">
-            <button class="btn btn-primary" onclick="document.querySelector('#collections').scrollIntoView({behavior:'smooth'})">
-              Shop performance tees
-            </button>
-            <button class="btn btn-outline" onclick="document.querySelector('#why').scrollIntoView({behavior:'smooth'})">
-              Why bamboo &gt;
-            </button>
-          </div>
-          <p class="hero-note">
-            Made for lifts, miles and late-night drives. Built to replace your “favourite tee” in one wear.
-          </p>
+          <div class="hero-eyebrow">Performance bamboo // training + street</div>
+          <h1 id="hero-heading" class="hero-heading">SOFT ON SKIN. <span class="hero-highlight">HARD ON WORKOUTS.</span></h1>
+          <p class="hero-sub">earthskin builds performance-grade bamboo tees that feel softer than cotton, breathe harder than polyester and look like premium streetwear.</p>
 
-          <div class="stat-bar">
-            <div class="stat-tile">
-              <div class="stat-value">3×</div>
-              <div class="stat-label">Softer feel vs cotton</div>
-            </div>
-            <div class="stat-tile">
-              <div class="stat-value">24/7</div>
-              <div class="stat-label">Gym-to-street comfort</div>
-            </div>
-            <div class="stat-tile">
-              <div class="stat-value">LESS</div>
-              <div class="stat-label">Water &amp; pesticides used</div>
-            </div>
+          <div style="margin-bottom:14px">
+            <span class="tag-pill">Performance blend</span>
+            <span class="tag-pill">Anti-odor</span>
+          </div>
+
+          <div class="cta">
+            <button class="btn btn-primary" onclick="document.getElementById('showcase').scrollIntoView({behavior:'smooth'})">See the drop</button>
+            <button class="btn-ghost" onclick="document.getElementById('why').scrollIntoView({behavior:'smooth'})">Why bamboo</button>
           </div>
         </div>
 
-        <div class="hero-media reveal" id="heroMedia">
+        <div class="hero-media reveal" aria-hidden="true">
           <div class="hero-panel">
-            <div class="hero-img" id="heroImg"></div>
-            <div class="hero-label-bar">
-              <div class="hero-label-pill">Bamboo Performance / 220–240 GSM</div>
-              <div class="hero-specs">
-                <span>Anti-odor</span>
-                <span>Quick-dry</span>
-              </div>
-            </div>
+            <div class="hero-img" id="heroImg" style="background-image:linear-gradient(to top,rgba(0,0,0,.55),transparent),url('https://images.pexels.com/photos/6311575/pexels-photo-6311575.jpeg?auto=compress&cs=tinysrgb&w=1400');"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY BAMBOO / FEATURES -->
+    <!-- WHY -->
     <section class="section alt" id="why">
       <div class="section-inner reveal">
-        <div class="section-kicker">WHY BAMBOO</div>
-        <h2 class="section-title">Built from a better base layer.</h2>
-        <p class="section-sub">
-          We started with bamboo because your skin deserves more than plastic sportswear and scratchy cotton. Then we dialed it in for strength work, conditioning and street use.
-        </p>
+        <div style="color:var(--green);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">WHY BAMBOO</div>
+        <h2 style="font-family:Space Grotesk, sans-serif;font-size:2.2rem;margin-bottom:12px;color:var(--beige)">Performance base layer</h2>
+        <p style="color:var(--beige-muted);max-width:720px">Bamboo gives you natural softness and breathability. We blend it with technical fibers to keep shape, speed drying and durability for daily training.</p>
 
-        <div class="features-grid">
-          <article class="feature-card">
-            <div class="feature-tag">Grip</div>
-            <h3 class="feature-title">Soft on skin, not on bar.</h3>
-            <p class="feature-text">
-              Naturally smooth fibers reduce skin irritation while maintaining a dry, confident feel under barbells and bands.
-            </p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-tag">Breathability</div>
-            <h3 class="feature-title">Heat out. Focus in.</h3>
-            <p class="feature-text">
-              Bamboo pulls moisture away and lets air flow, so your focus stays on the next rep, not the next sweat patch.
-            </p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-tag">Freshness</div>
-            <h3 class="feature-title">Anti-odor by nature.</h3>
-            <p class="feature-text">
-              Naturally anti-bacterial properties help resist odor so you can go from set three to street food without a swap.
-            </p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-tag">Planet</div>
-            <h3 class="feature-title">Less load on the earth.</h3>
-            <p class="feature-text">
-              Bamboo grows fast, uses less water and skips harsh pesticides. Performance that doesn’t cost the planet extra.
-            </p>
-          </article>
+        <div class="features-grid" style="margin-top:24px">
+          <div class="feat reveal"><h4>Soft feel</h4><p>Round fibers that glide across skin, not scratch it.</p></div>
+          <div class="feat reveal"><h4>Quick-dry</h4><p>Moves moisture away during intervals and long runs.</p></div>
+          <div class="feat reveal"><h4>Anti-odor</h4><p>Natural properties reduce bacterial growth.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section id="showcase" class="showcase" aria-labelledby="showcase-title">
+      <div class="showcase-inner section-inner">
+        <div class="showcase-left reveal">
+          <div class="showcase-eyebrow">THE DROP // VISION</div>
+          <h3 id="showcase-title" class="showcase-title">Designed to perform. Styled to be seen.</h3>
+          <p class="showcase-desc">Scroll down — the image will transition as you move. Each frame shows the same tee in different contexts: lifting, running, city, studio. Smooth crossfade + subtle parallax creates that cinematic, premium product reveal.</p>
+        </div>
+
+        <div class="showcase-right">
+          <div class="showcase-stage">
+            <div class="stage-viewport" id="stageViewport" role="img" aria-label="Product showcase">
+              <div class="stage-image" data-index="0"
+                   style="background-image: linear-gradient(to top, rgba(0,0,0,.45), transparent), url('https://images.pexels.com/photos/7671161/pexels-photo-7671161.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+
+              <div class="stage-image" data-index="1"
+                   style="background-image: linear-gradient(to top, rgba(0,0,0,.45), transparent), url('https://images.pexels.com/photos/7671165/pexels-photo-7671165.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+
+              <div class="stage-image" data-index="2"
+                   style="background-image: linear-gradient(to top, rgba(0,0,0,.45), transparent), url('https://images.pexels.com/photos/6311575/pexels-photo-6311575.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+
+              <div class="stage-image" data-index="3"
+                   style="background-image: linear-gradient(to top, rgba(0,0,0,.45), transparent), url('https://images.pexels.com/photos/374019/pexels-photo-374019.jpeg?auto=compress&cs=tinysrgb&w=1600');"></div>
+
+              <div class="stage-caption" id="stageCaption">Lifting // Night session</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- COLLECTIONS -->
-    <section class="section" id="collections">
+    <section id="collections" class="section">
       <div class="section-inner reveal">
-        <div class="section-kicker">LINE-UP</div>
-        <h2 class="section-title">Three builds. One attitude.</h2>
-        <p class="section-sub">
-          All EarthSkin pieces share the same bamboo DNA and performance mindset. You pick how you want it to sit on your frame and in your day.
-        </p>
+        <div style="color:var(--green);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">LINE-UP</div>
+        <h2 style="font-family:Space Grotesk, sans-serif;font-size:2rem;margin-bottom:12px;color:var(--beige)">Three builds. One attitude.</h2>
+        <p style="color:var(--beige-muted);max-width:720px">Core Oversized. Active Fit. Custom Drops — each crafted on the same performance bamboo base.</p>
 
-        <div class="collections-grid">
-          <article class="collection-card">
-            <div>
-              <div class="collection-tag">Daily / Street</div>
-              <h3 class="collection-title">Core Oversized</h3>
-              <p class="collection-text">
-                Drop-shoulder, boxy fit, neutral tones. Built to live in – from coffee runs to casual days at the rack.
-              </p>
-            </div>
-            <div class="collection-meta">
-              <span>220 GSM feel</span>
-              <span>Muted palette</span>
-            </div>
-          </article>
-
-          <article class="collection-card">
-            <div>
-              <div class="collection-tag">Gym / Run / Ride</div>
-              <h3 class="collection-title">Active Fit</h3>
-              <p class="collection-text">
-                Slightly tapered, training-first tee with mobility in the shoulders and airflow down the back.
-              </p>
-            </div>
-            <div class="collection-meta">
-              <span>Quick-dry</span>
-              <span>Training ready</span>
-            </div>
-          </article>
-
-          <article class="collection-card">
-            <div>
-              <div class="collection-tag">Teams / Creators</div>
-              <h3 class="collection-title">Custom Drops</h3>
-              <p class="collection-text">
-                Your gym, crew or brand on EarthSkin fabric – with 3D logos, reflective hits or clean embroidery.
-              </p>
-            </div>
-            <div class="collection-meta">
-              <span>Low MOQ</span>
-              <span>Designed with you</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- FABRIC TECH -->
-    <section class="section alt" id="fabric">
-      <div class="section-inner split">
-        <div class="reveal">
-          <div class="section-kicker">FABRIC TECH</div>
-          <h2 class="section-title">Performance-engineered bamboo.</h2>
-          <p class="section-sub">
-            This isn’t just “eco fabric”. It’s fiber chosen for comfort, tuned for training and cut to sit right in real life – not just in product shots.
-          </p>
-          <ul class="list">
-            <li>• 220–240 GSM bamboo blends that drape with weight but don’t feel heavy.</li>
-            <li>• Naturally breathable and moisture-managing for humid gyms and Indian summers.</li>
-            <li>• Less cling, less static, more air between you and the grind.</li>
-            <li>• Flat seams and necklines designed to move with you, not against you.</li>
-          </ul>
-        </div>
-
-        <div class="fabric-card reveal">
-          <div class="fabric-label">CORE SPEC</div>
-          <div class="fabric-main">70% bamboo / 30% performance fibers*</div>
-          <p class="fabric-text">
-            The sweet spot between natural comfort and technical durability. Bend, sprint, hang – the tee comes back ready again.
-          </p>
-          <div class="fabric-badges">
-            <span class="fabric-badge">Anti-odor</span>
-            <span class="fabric-badge">Moisture-managing</span>
-            <span class="fabric-badge">Soft-touch</span>
-            <span class="fabric-badge">Less water used</span>
-          </div>
-          <p class="fabric-text" style="margin-top:10px;font-size:0.78rem;">
-            *Exact blend may change by drop as we experiment with better, cleaner performance mixes.
-          </p>
+        <div class="features-grid" style="margin-top:24px">
+          <div class="feat reveal"><h4>Core Oversized</h4><p>Boxy comfort for everyday wear.</p></div>
+          <div class="feat reveal"><h4>Active Fit</h4><p>Mobility in the shoulders, airflow down the back.</p></div>
+          <div class="feat reveal"><h4>Custom Drops</h4><p>Low MOQ. 3D logos and reflective hits available.</p></div>
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="section" id="cta">
+    <section id="cta" class="section alt">
       <div class="section-inner reveal">
-        <div class="cta-band">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
           <div>
-            <div class="section-kicker">FIRST DROP</div>
-            <h2 class="section-title" style="font-size:1.4rem;letter-spacing:0.18em;">
-              EARTHSKIN // 01
-            </h2>
-            <p>
-              Limited run of performance bamboo tees. If you lift, run, ride or just live in T-shirts, this is your test batch. Feedback welcome. Heavy use expected.
-            </p>
+            <div style="color:var(--green);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px">FIRST DROP</div>
+            <h3 style="font-family:Space Grotesk, sans-serif;font-size:1.4rem;margin-bottom:6px;color:var(--beige)">earthskin // 01</h3>
+            <p style="color:var(--beige-muted);max-width:520px">Limited performance run — give feedback, test it hard, wear it longer.</p>
           </div>
           <div>
-            <button class="btn btn-primary">
-              I want in
-            </button>
+            <button class="btn btn-primary">I want in</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer-inner">
-        <div>EARTHSKIN – Performance bamboo for training and street.</div>
-        <div class="footer-links">
-          <a href="#top">Top</a>
-          <a href="#why">Why bamboo</a>
-          <a href="#collections">Collections</a>
-          <a href="#fabric">Fabric tech</a>
-        </div>
-        <div>© <span id="year"></span> EarthSkin.</div>
+    <footer class="footer" role="contentinfo">
+      <div style="max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div><span class="brand-name">earthskin<span class="rtm">®</span></span> • Performance bamboo for training &amp; street.</div>
+        <div style="display:flex;gap:12px"><a href="#top">Top</a><a href="#why">Why</a><a href="#showcase">Showcase</a></div>
+        <div>© <span id="year"></span></div>
       </div>
     </footer>
   </div>
 
   <script>
     // dynamic year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // scroll reveal
-    const reveals = document.querySelectorAll(".reveal");
-    const io = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            io.unobserve(entry.target);
-          }
+    // reveal on scroll
+    (function(){
+      const items = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver(entries=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){ en.target.classList.add('visible'); io.unobserve(en.target); }
         });
-      },
-      { threshold: 0.18 }
-    );
-    reveals.forEach(el => io.observe(el));
+      },{threshold:0.12});
+      items.forEach(i=>io.observe(i));
+    })();
 
-    // subtle parallax and stripe motion
-    const heroMedia = document.getElementById("heroMedia");
-    const diagStripe = document.getElementById("diagStripe");
-
-    window.addEventListener("scroll", () => {
+    // stripe subtle move
+    const diagStripe = document.getElementById('diagStripe');
+    window.addEventListener('scroll', ()=>{
       const y = window.scrollY || window.pageYOffset;
-      const parallax = y * -0.03;
-      const stripe = y * 0.02;
-
-      if (heroMedia) {
-        heroMedia.style.transform = `translateY(${parallax}px)`;
-      }
-      if (diagStripe) {
-        diagStripe.style.transform = `translateY(${stripe}px)`;
-      }
+      if(diagStripe) diagStripe.style.transform = `translateY(${y * 0.02}px)`;
     });
+
+    // SHOWCASE transitions
+    (function(){
+      const showcase = document.getElementById('showcase');
+      if(!showcase) return;
+
+      const stage = document.getElementById('stageViewport');
+      const images = Array.from(stage.querySelectorAll('.stage-image'));
+      const caption = document.getElementById('stageCaption');
+
+      const captions = [
+        'Lifting // Night session',
+        'City run // Dusk',
+        'Studio // Slow motion',
+        'Commuter // Morning'
+      ];
+
+      let activeIndex = 0;
+      images.forEach((img,i)=>{
+        img.style.opacity = i===0 ? '1' : '0';
+        if(i===0) img.classList.add('visible');
+      });
+      caption.textContent = captions[0];
+
+      function updateOnScroll(){
+        const rect = showcase.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight;
+        const start = vh * 0.2;
+        const end = vh * 0.8;
+        const progress = Math.min(Math.max((vh - rect.top - start) / ((rect.height || vh) + (end - start)), 0), 1);
+        const idxFloat = progress * (images.length - 1);
+        const idx = Math.round(idxFloat);
+
+        if(idx !== activeIndex){
+          images[activeIndex].classList.remove('visible'); images[activeIndex].style.opacity = 0;
+          images[idx].classList.add('visible'); images[idx].style.opacity = 1;
+          activeIndex = idx;
+          caption.textContent = captions[idx] || '';
+        }
+
+        images.forEach((img,i)=>{
+          const d = i - idxFloat;
+          const translateY = Math.max(Math.min(d * 20, 40), -40);
+          const scale = 1 - Math.min(Math.abs(d) * 0.06, 0.14);
+          img.style.transform = `translateY(${translateY}px) scale(${scale})`;
+          const sat = 1 + Math.max(0, 0.06 - Math.abs(d)*0.03);
+          img.style.filter = `saturate(${sat}) contrast(1.04)`;
+        });
+      }
+
+      let ticking = false;
+      window.addEventListener('scroll', ()=>{ if(!ticking){ window.requestAnimationFrame(()=>{ updateOnScroll(); ticking=false; }); ticking=true; }});
+      updateOnScroll();
+
+      // mobile swipe
+      let startX = null;
+      stage.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; }, {passive:true});
+      stage.addEventListener('touchend', (e)=>{
+        if(startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if(Math.abs(dx) > 30){
+          const dir = dx < 0 ? 1 : -1;
+          let newIdx = Math.min(Math.max(activeIndex + dir, 0), images.length-1);
+          if(newIdx !== activeIndex){
+            images[activeIndex].classList.remove('visible'); images[activeIndex].style.opacity=0;
+            images[newIdx].classList.add('visible'); images[newIdx].style.opacity=1;
+            activeIndex = newIdx;
+            caption.textContent = captions[newIdx] || '';
+          }
+        }
+        startX = null;
+      }, {passive:true});
+    })();
   </script>
 </body>
 </html>
